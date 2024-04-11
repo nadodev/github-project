@@ -2,7 +2,7 @@ header {
     background-color: #24292E;
     height: 7.2rem;
     color: #fff;
-    display: flex;
+    display: none;
     justify-content: start;
 
 
@@ -16,4 +16,98 @@ header {
         display: flex;
         gap: 2.2rem;
     }
+
+    @media (min-width: 744px) {
+        display: flex;
+    }
 }
+
+
+main {
+    @media (min-width: 744px) {
+        display: grid;
+        grid-template-columns: 21.7rem 1fr;
+        gap: 4.0rem;
+    }
+}
+
+.user {
+    margin-top: 4.0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  
+    &__info {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+  
+        h2 {
+            font-weight: bold;
+            font-size: 2.0rem;
+            margin-bottom: 0.4rem;
+        }
+  
+        p {
+            font-size: 1.4rem;
+            color: var(--gray-100);
+            max-width: 21.7rem;
+            margin-bottom: 2.4rem;
+        }
+  
+        a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--blue-100);
+            font-size: 1.4rem;
+            text-decoration: none;
+            gap: 1.1rem;
+        }
+  
+        &__secondary {
+            margin-top: 2.4rem;
+            text-align: left;
+            background-color: #F8F8F8;
+            padding: 1.6rem;
+            border-radius: 1.6rem;
+            width: 100%;
+  
+            display: none;
+  
+            &.active {
+                display: block;
+            }
+  
+            p {
+                margin-bottom: 1.6rem;
+                color: #0587FF;
+                font-size: 1.4rem;
+  
+                display: flex;
+                align-items: center;
+                gap: 1.0rem;
+            }
+        }
+
+          
+        @media (min-width: 744px) {
+            display: block;
+
+            &__secondary {
+                background-color: transparent;
+                display: block;
+            }
+
+            a {
+      
+                display: none;
+            }
+        }
+    }
+  }

@@ -13,19 +13,42 @@
 </head>
 
 <body>
-    <div class="container">
-        <header>
+    <header>
+        <div class="container">
             <div class="logo">
-                    <img src="./assets/logo.svg" alt="logotipo é uma imagem que está escrito github com um icone.">
-            </div>  
-            <div class="breadcrumb">
-                    <span>
-                        / Profile
-                    </span>
+                <img src="./assets/logo.svg" alt="logotipo é uma imagem que está escrito github com um icone.">
             </div>
-        </header>
-        
-    <script type="module" src="main.js"></script> 
+            <div class="breadcrumb">
+                <span>
+                    / 
+                </span>
+                <span>
+                    Profile
+                </span>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main>
+            <article class="user">
+                <div class="avatar">
+                    <img id="avatar" src="#" alt="imagem do avatar do github" />
+                </div>
+                <div class="user__info">
+                    <h2  id="username"></h2>
+                    <p  id="userDescription"></p>
+                    <a href="#" title="Informações Adicionais"  id="additionalInfo">Informações Adicionais
+                        <img src="./assets/icon_arrow_down.svg" alt="imagem de um livro" />
+                    </a>
+                    <div class="user__info__secondary"  id="additionalUserInfo">
+                        
+                    </div>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <script type="module" src="main.js"></script>
 </body>
 
 </html>
