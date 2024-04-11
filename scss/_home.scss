@@ -1,0 +1,19 @@
+header {
+    background-color: #24292E;
+    height: 7.2rem;
+    color: #fff;
+    display: flex;
+    justify-content: start;
+
+
+    .container {
+        display: flex;
+        align-items: center;
+        gap: 2.2rem;
+    }
+
+    .breadcrumb {
+        display: flex;
+        gap: 2.2rem;
+    }
+}
