@@ -195,3 +195,86 @@ main {
         }
     }
 }
+
+
+.checkbox__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.repositories {
+    margin-bottom: 4rem;
+  &__item {
+   
+      text-decoration: none;
+      margin-top: 3.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+
+      h3 {
+          font-size: 1.8rem;
+        
+          max-width: 100%;
+          font-weight: 300;
+          cursor: pointer;
+
+          span {
+              font-weight: bold;
+              color: #0587FF;
+          }
+
+          &:hover {
+              text-decoration: underline;
+          }
+      }
+  }
+
+  &__info {
+      display: flex;
+      gap: 3.2rem;
+  }
+
+  &__fork,
+  &__stars {
+      display: flex;
+      gap: 2px;
+  }
+
+  @media(min-width: 400px) {
+    &__item {
+  
+        h3 {
+            max-width: 30.0rem;
+  
+        }
+    }
+  }
+}
+
+.repositories {
+    flex-direction: column;
+}
+.starred {
+  margin-top: 4.0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.starredCard {
+  display: flex;
+  gap: 1rem;
+  padding: 1.6rem;
+
+  background-color: #F8F8F8;
+  border-radius: 1.6rem;
+
+  p {
+      font-size: 1.4rem;
+      color: #000;
+      display: flex;
+      align-items: center;
+      gap: 1.0rem;
+  }
+}
