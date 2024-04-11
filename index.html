@@ -20,7 +20,7 @@
             </div>
             <div class="breadcrumb">
                 <span>
-                    / 
+                    /
                 </span>
                 <span>
                     Profile
@@ -35,13 +35,13 @@
                     <img id="avatar" src="#" alt="imagem do avatar do github" />
                 </div>
                 <div class="user__info">
-                    <h2  id="username"></h2>
-                    <p  id="userDescription"></p>
-                    <a href="#" title="Informações Adicionais"  id="additionalInfo">Informações Adicionais
+                    <h2 id="username"></h2>
+                    <p id="userDescription"></p>
+                    <a href="#" title="Informações Adicionais" id="additionalInfo">Informações Adicionais
                         <img src="./assets/icon_arrow_down.svg" alt="imagem de um livro" />
                     </a>
-                    <div class="user__info__secondary"  id="additionalUserInfo">
-                        
+                    <div class="user__info__secondary" id="additionalUserInfo">
+
                     </div>
                 </div>
             </article>
@@ -51,14 +51,14 @@
                         <img src="./assets/book.svg" alt="icone de livro" />
                         Repositórios
                         <span id="repositories_total">
-                           
+
                         </span>
                     </div>
                     <div class="tabs__item " data-tab="starred">
                         <img src="./assets/star.svg" alt="icone de uma estrela" />
                         Starred
                         <span id="starred_total">
-                            
+
                         </span>
                     </div>
                 </article>
@@ -141,10 +141,29 @@
 
                 </article>
                 <article class="starred" id="starredSection" data-id="tab_content" data-tab="starred">
-            
+
                 </article>
+                <!-- Modal -->
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal__header">
+                            <span class="close">&times;</span>
+                            <h2 id="repoName"></h2>
+                        </div>
+                        <div class="modal__body">
+                            <p id="repoDescription"></p>
+                            <p id="repoStars"></p>
+                            <p id="repoForks"></p>
+                            <a id="repoLink" href="#" target="_blank">Link para o repositório</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overlay da modal -->
+                <div id="modalOverlay" class="modal-overlay"></div>
             </div>
-        </main>
+    </div>
+    </main>
     </div>
     <script type="module" src="main.js"></script>
 </body>
