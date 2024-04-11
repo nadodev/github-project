@@ -45,9 +45,41 @@
                     </div>
                 </div>
             </article>
+            <div>
+                <article class="tabs">
+                    <div class="tabs__item active" data-tab="repositories">
+                        <img src="./assets/book.svg" alt="icone de livro" />
+                        Repositórios
+                        <span id="repositories_total">
+                           
+                        </span>
+                    </div>
+                    <div class="tabs__item " data-tab="starred">
+                        <img src="./assets/star.svg" alt="icone de uma estrela" />
+                        Starred
+                        <span id="starred_total">
+                            
+                        </span>
+                    </div>
+                </article>
+                <div class="filter">
+                    <div class="filter__search">
+                        <input type="text" id="search">
+                    </div>
+                    <article class="filter__buttons">
+                        <button class="button button__blue" id="btn_type">
+                            <img src="./assets/arrow-down.svg" alt="three" />
+                            type
+                        </button>
+                        <button class="button button__blue" id="btn_language">
+                            <img src="./assets/arrow-down.svg" alt="three" class="img_language" />
+                            language
+                        </button>
+                    </article>
+                </div>
+            </div>
         </main>
     </div>
-
     <script type="module" src="main.js"></script>
 </body>
 

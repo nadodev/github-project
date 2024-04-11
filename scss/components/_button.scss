@@ -1,0 +1,19 @@
+.button {
+    text-decoration: none;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    padding: 0.8rem 2.4rem;
+    gap: 1.0rem;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4.2rem;
+   
+
+    &__blue {
+        background-image: linear-gradient(to right, #0056A6, #0587FF);
+        background-color: #0056A6;
+    }
+}
