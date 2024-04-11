@@ -1,11 +1,12 @@
 
 import { displayUserData, fetchUserDataAndSave, userData } from './js/fetchUser.js';
-import { fetchRepositoriesAndSave, displayRepositories, getRepositoriesFromStorage } from './js/fetchRepositories.js';
+import { fetchRepositoriesAndSave, displayRepositories } from './js/fetchRepositories.js';
 import { closeModal } from './js/closeModal.js';
+import { activeTabs } from './js/tabs.js';
 
 const additionalInfo = document.getElementById('additionalInfo');
 const additionalUserInfo = document.getElementById('additionalUserInfo');
-const repositoriesData = getRepositoriesFromStorage();
+const repositoriesData = fetchRepositoriesAndSave('diego3g');
 
 const btn_search = document.getElementById('btn_search');
 
@@ -65,93 +66,6 @@ function initializeCloseButton(button, filter) {
     });
 }
 
-async function getStarredRepositories(username) {
-    try {
-        const response = await fetch(`https://api.github.com/users/${username}/starred`);
-        if (!response.ok) {
-            throw new Error('Erro ao obter os repositórios starred');
-        }
-        const data = await response.json();
-        return data.map(repo => repo.full_name);
-    } catch (error) {
-        console.error('Erro:', error);
-        return [];
-    }
-}
-function displayStarredRepositories(element) {
-    const repositoryList = document.getElementById('starredSection');
-    element.forEach(repo => {
-      const card = document.createElement('div');
-      card.classList.add('starredCard');
-      const item = document.createElement('p');
-      item.innerHTML = `
-         <img src="./assets/star.svg" alt="three"> ${repo}
-      `;
-      card.appendChild(item);
-      repositoryList.appendChild(card);
-    });
-  }
-
-function activeTabs(tabName) {
-    const tabs = document.querySelectorAll('.tabs__item');
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function (e) {
-            const clickedTabName = this.dataset.tab;
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-            });
-            this.classList.add('active');
-            showTab(clickedTabName);
-            hideOtherTab(clickedTabName); 
-        });
-    });
-}
-
-function showTab(tabName) {
-    console.log('tabName', tabName);
-    const tabs = document.querySelectorAll('[data-id="tab_content"]');
-    tabs.forEach(tab => {
-        tab.classList.remove('active');
-    });
-    document.querySelector("[data-tab='" + tabName + "']").classList.add('active');
-}
-
-function hideOtherTab(selectedTabName) {
-    const tabs = document.querySelectorAll('[data-id="tab_content"]');
-    tabs.forEach(tab => {
-        if (tab.dataset.tab !== selectedTabName) {
-            tab.style.display = 'none';
-        } else {
-            tab.style.display = 'flex'; // ou outro estilo adequado para mostrar a aba selecionada
-        }
-
-        if (tab.dataset.tab === 'starred') {
-            const username = 'diego3g'
-
-            getStarredRepositories(username)
-                .then(repos => {
-                    console.log('Repositórios Starred:', repos);
-                    displayStarredRepositories(repos);
-                 
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
-                });
-        }
-        
-
-        if (tab.dataset.tab === 'repositories' && tab.classList.contains('active')) {
-            if (repositoriesData) {
-                displayRepositories(repositoriesData);
-            } else {
-                // Se os dados não estiverem no cache ou estiverem expirados, buscar da API
-                fetchRepositoriesAndSave('diego35')
-                    .catch(error => console.error('Erro ao buscar e exibir repositórios:', error));
-            }
-        }
-    });
-}
 
 
 

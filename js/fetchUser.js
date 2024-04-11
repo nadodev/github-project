@@ -5,9 +5,14 @@ export async function fetchUserDataAndSave(username) {
         const response = await fetch(userUrl);
         const userData = await response.json();
 
+        // Obter os repositórios marcados como favoritos pelo usuário
+        const starredResponse = await fetch(`https://api.github.com/users/${username}/starred`);
+        const starredData = await starredResponse.json();
+        
         // Adicionar timestamp aos dados do usuário
         const userDataWithTimestamp = {
             data: userData,
+            starred: starredData.length, // Número total de repositórios favoritos
             timestamp: Date.now()
         };
 
