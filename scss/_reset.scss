@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box  ;
+}
+
+body, h1, h2, h3, h4, button, input, textarea, select{
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --gray-100: #989898;
+    --blue-100: #0587FF;
+
+    font-size: 62.52%;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 360px; 
+    margin: 0 auto; 
+    padding: 0 1rem; 
+
+    @media (min-width: 744px) {
+        max-width: 1259px;
+    }
+}
+
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 400;
+    color: #262626;
+}
+
+body {
+    font-size: 1.6rem;
+}
