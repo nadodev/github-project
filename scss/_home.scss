@@ -115,25 +115,54 @@ main {
   .filter {
     display: flex;
     flex-direction: column;
+
     &__search {
         max-width: 44.4rem;
         width: 100%;
         order: 2;
+        display: none;
 
         input {
             width: 100%;
             border: none;
-            background-color: #F8F8F8;
+            background-color: transparent;
+            border-bottom: 2px solid #F4F4F4;
             padding: 1rem;
-            font-size: 1.4rem
+            font-size: 1.4rem;
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z' stroke='%23989898' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21 21L16.65 16.65' stroke='%23989898' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            background-repeat: no-repeat;
+            background-position: 0% 50%;
+            padding-left: 4rem;
+            
+            &::placeholder {
+                color: #989898;
+                font-size: 1.8rem; 
+            }
+        }
+
+        &.active {
+            display: block;
+        
         }
     }
     &__buttons {
+        background-color: #F8F8F8;
+        padding: 1.2rem 0.8rem;
         order: 1;
         display: flex;
         gap: 0.8rem;
         margin-top: 3.0rem;
         margin-bottom: 2.8rem;
+        position: relative;
+
+        &_btn_search {
+            position: absolute;
+            top: 30%;
+            right:15px;
+            border: none;
+            background-color: transparent;
+            display: block;
+        }
     }
     
     &__wrapper {
@@ -180,6 +209,19 @@ main {
         flex-direction: column;
         gap: 1.4rem;
     }
+    @media(min-width: 744px) {
+        &__search {
+            display: block;
+        }
+
+        &__buttons {
+            background-color: transparent;
+            padding: 0;
+            &_btn_search {
+                display: none;
+            }
+        }
+    }
 
     @media(min-width:1244px) {
         flex-direction: row;
@@ -193,6 +235,7 @@ main {
         &__buttons {
             order: 2;
         }
+
     }
 }
 
@@ -215,7 +258,6 @@ main {
 
       h3 {
           font-size: 1.8rem;
-        
           max-width: 100%;
           font-weight: 300;
           cursor: pointer;
@@ -225,10 +267,17 @@ main {
               color: #0587FF;
           }
 
+
           &:hover {
               text-decoration: underline;
           }
       }
+      
+      p {
+        font-size: 1.4rem;
+        color: #989898;
+      }
+
   }
 
   &__info {
@@ -240,6 +289,17 @@ main {
   &__stars {
       display: flex;
       gap: 2px;
+     
+    
+      p {
+        font-size: 1.4rem;
+        color:#000000;
+      }
+
+      img {
+        width: 2.0rem;
+        height: 2.0rem;
+      }
   }
 
   @media(min-width: 400px) {
