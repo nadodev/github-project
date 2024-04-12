@@ -17,7 +17,7 @@ export function displayStarredRepositories(element) {
     const repositoryList = document.getElementById('starredSection');
     element.forEach(repo => {
       const card = document.createElement('div');
-      card.classList.add('starredCard');
+      card.classList.add('starred__card');
       const item = document.createElement('p');
       item.innerHTML = `
          <img src="./assets/star.svg" alt="three"> ${repo}

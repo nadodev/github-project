@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // displayRepositories(repositoriesData);
 
     // Fechar a modal quando o usuário clica no botão 'X'
-    document.getElementsByClassName('close')[0].addEventListener('click', function () {
+    document.getElementsByClassName('modal__close')[0].addEventListener('click', function () {
         closeModal()
     });
 
