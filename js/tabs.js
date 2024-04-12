@@ -1,7 +1,7 @@
-import { displayRepositories, fetchRepositoriesAndSave } from "./fetchRepositories";
+import { USER_NAME, displayRepositories, fetchRepositoriesAndSave } from "./fetchRepositories";
 import { displayStarredRepositories, getStarredRepositories } from "./starredRepositories";
 
-export function activeTabs(tabName) {
+export function activeTabs() {
     const tabs = document.querySelectorAll('.tabs__item');
 
     tabs.forEach(tab => {
@@ -23,24 +23,25 @@ export function showTab(tabName) {
     tabs.forEach(tab => {
         tab.classList.remove('active');
     });
+    
     document.querySelector("[data-tab='" + tabName + "']").classList.add('active');
 }
 
 export function hideOtherTab(selectedTabName) {
     const tabs = document.querySelectorAll('[data-id="tab_content"]');
     tabs.forEach(tab => {
+
         if (tab.dataset.tab !== selectedTabName) {
             tab.style.display = 'none';
         } else {
-            tab.style.display = 'flex'; // ou outro estilo adequado para mostrar a aba selecionada
+            tab.style.display = 'flex'; 
         }
 
         if (tab.dataset.tab === 'starred') {
-            const username = 'diego3g'
+            const username = USER_NAME;
 
             getStarredRepositories(username)
                 .then(repos => {
-                    console.log('Repositórios Starred:', repos);
                     displayStarredRepositories(repos);
                  
                 })
@@ -55,7 +56,7 @@ export function hideOtherTab(selectedTabName) {
                 displayRepositories(repositoriesData);
             } else {
                 // Se os dados não estiverem no cache ou estiverem expirados, buscar da API
-                fetchRepositoriesAndSave('diego3g')
+                fetchRepositoriesAndSave(USER_NAME)
                     .catch(error => console.error('Erro ao buscar e exibir repositórios:', error));
             }
         }
