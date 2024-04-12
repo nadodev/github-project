@@ -8,7 +8,7 @@
     <meta name="description" content="Visualizador de perfis do GitHub">
     <meta name="keywords" content="GitHub, perfil, repositórios, favoritos">
     <meta name="robots" content="index, follow">
-    <link rel="stylesheet" href="scss/base.scss" />
+    <link rel="stylesheet" href="./dist/assets/scss-CDLzf0rb.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
@@ -16,7 +16,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="./assets/logo.svg" alt="logotipo é uma imagem que está escrito github com um icone.">
+                <img src="./assets/logo.svg" alt="logotipo é uma imagem que está escrito github com um icone." width="124" height="30">
             </div>
             <div class="breadcrumb">
                 <span>
@@ -32,14 +32,14 @@
         <main>
             <article class="user">
                 <div class="avatar">
-                    <img id="avatar" src="#" alt="imagem do avatar do github" class="avatar__img"/>
-                    <img src="./assets/smile.png" alt="" class="avatar__smile">
+                    <img id="avatar" src="#" alt="imagem do avatar do github" class="avatar__img" width="104" height="104"/>
+                    <img src="./assets/smile.png" alt="uma imagem de um emoticon sorrindo" class="avatar__smile" >
                 </div>
                 <div class="user__info">
                     <h2 id="username"></h2>
                     <p id="userDescription"></p>
                     <a href="#" title="Informações Adicionais" id="additionalInfo">Informações Adicionais
-                        <img src="./assets/icon_arrow_down.svg" alt="imagem de um livro" />
+                        <img src="./assets/icon_arrow_down.svg" alt="imagem de um livro" width="12" height="6" />
                     </a>
                     <div class="user__info__secondary" id="additionalUserInfo">
 
@@ -48,14 +48,14 @@
             </article>
             <div>
                 <article class="tabs">
-                    <div class="tabs__item active" data-tab="repositories">
+                    <div class="tabs__item active" data-tab="repositories" title="a aba de repositórios e está ativa">
                         <img src="./assets/book.svg" alt="icone de livro" />
                         Repositórios
                         <span id="repositories_total">
 
                         </span>
                     </div>
-                    <div class="tabs__item " data-tab="starred">
+                    <div class="tabs__item " data-tab="starred" title="a aba de favoritos">
                         <img src="./assets/star.svg" alt="icone de uma estrela" />
                         Starred
                         <span id="starred_total">
@@ -65,14 +65,14 @@
                 </article>
                 <div class="filter">
                     <div class="filter__search" id="input_search">
-                        <input type="text" id="search" placeholder="Search Here">
+                        <input type="text" id="search" placeholder="Search Here" >
                     </div>
                     <article class="filter__buttons">
-                        <button class="button button__blue" id="btn_type">
+                        <button class="button button__blue" id="btn_type" title="Botao de abrir a janela de filtros type">
                             <img src="./assets/arrow-down.svg" alt="three" />
                             Type
                         </button>
-                        <button class="button button__blue" id="btn_language">
+                        <button class="button button__blue" id="btn_language" title="Botao de abrir a janela de filtros language">
                             <img src="./assets/arrow-down.svg" alt="three" class="img_language" />
                             Language
                         </button>
@@ -84,7 +84,7 @@
                 <div class="filter__wrapper " id="language">
                     <div class="filter__header">
                         <h2>Languages</h2>
-                        <button id="close_language">
+                        <button id="close_language" title="Botao de fechar a janela de filtros language">
                             <img src="./assets/icon_close.svg" alt="close" />
                         </button>
                     </div>
@@ -114,7 +114,7 @@
                 <div class="filter__wrapper " id="type">
                     <div class="filter__header">
                         <h2>Type</h2>
-                        <button id="close_type">
+                        <button id="close_type" title="Botao de fechar a janela de filtros type">
                             <img src="./assets/icon_close.svg" alt="close" />
                         </button>
                     </div>
@@ -151,7 +151,7 @@
                 <div id="myModal" class="modal">
                     <div class="modal__content">
                         <div class="modal__header">
-                            <span class="modal__close">&times;</span>
+                            <span class="modal__close" >&times;</span>
                             <h2 id="repoName"></h2>
                         </div>
                         <div class="modal__body">
@@ -169,7 +169,7 @@
     </div>
     </main>
     </div>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="/dist/assets/main-DPWnMoPa.js" defer></script>
 </body>
 
 </html>
