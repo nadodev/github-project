@@ -3,7 +3,7 @@ import { displayUserData, fetchUserDataAndSave, userData } from './js/fetchUser.
 import { fetchRepositoriesAndSave, displayRepositories, getArrayFromLocalStorage, USER_NAME } from './js/fetchRepositories.js';
 import { closeModal } from './js/closeModal.js';
 import { activeTabs } from './js/tabs.js';
-import { handleKeyPress, initializeCloseButton, initializeFilterButton } from './js/helpers.js';
+import { initializeCloseButton, initializeFilterButton } from './js/helpers.js';
 
 
 
@@ -15,7 +15,12 @@ const searchInput = document.getElementById('search');
 const arrow = document.querySelector('#additionalInfo img');
 
 
-
+export function handleKeyPress(event) {
+    // Verifica se a tecla pressionada é "Enter"
+    if (event.key === 'Enter') {
+        fetchRepositoriesAndSave(USER_NAME, event.target.value);
+    }
+}
 
 document.addEventListener('DOMContentLoaded', async function () {
     const repositoriesData = getArrayFromLocalStorage(USER_NAME);
@@ -35,6 +40,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     btn_search.addEventListener('click', function () {
         input__search.classList.toggle('active');
     })
+
 
     searchInput.addEventListener('keypress', handleKeyPress);
 

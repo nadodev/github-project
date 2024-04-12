@@ -11,12 +11,17 @@ export default defineConfig({
 
 
   ],
- build: {
-  minify: 'terser',
+  build: {
+    minify: 'terser',
     rollupOptions: {
       input: {
-        main: 'main.js', 
+        main: 'main.js',
         scss: 'scss/base.scss',
+      },
+      output: {
+        // Define o nome do arquivo de saída
+        entryFileNames: '[name].min.js',
+        assetFileNames: 'style.min.css'
       },
       plugins: [
         terser(), 

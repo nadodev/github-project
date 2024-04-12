@@ -2,6 +2,7 @@ export const USER_NAME = 'diego3g';
 
 // Função para buscar os repositórios do usuário e salvá-los no localStorage
 function searchRepositories() {
+    
     const searchInput = document.getElementById('searchInput').value;
     fetchRepositoriesAndSave('username', searchInput);
 }

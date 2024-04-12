@@ -14,13 +14,7 @@ export function initializeFilterButton(button, filterToShow, filterToHide) {
         hideFilter(filterToHide);
     });
     
-}
 
-export function handleKeyPress(event) {
-    // Verifica se a tecla pressionada é "Enter"
-    if (event.key === 'Enter') {
-        fetchRepositoriesAndSave(USER_NAME, event.target.value);
-    }
 }
 
 
