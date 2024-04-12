@@ -1,7 +1,7 @@
 header {
-    background-color: #24292E;
+    background-color: var(--gray-700);
     height: 7.2rem;
-    color: #fff;
+    color: var(--white);
     display: none;
     justify-content: start;
 
@@ -54,7 +54,7 @@ main {
   
         p {
             font-size: 1.4rem;
-            color: var(--gray-100);
+            color: var(--gray-200);
             max-width: 21.7rem;
             margin-bottom: 2.4rem;
         }
@@ -73,7 +73,7 @@ main {
         &__secondary {
             margin-top: 2.4rem;
             text-align: left;
-            background-color: #F8F8F8;
+            background-color: var(--gray-100);
             padding: 1.6rem;
             border-radius: 1.6rem;
             width: 100%;
@@ -86,7 +86,7 @@ main {
   
             p {
                 margin-bottom: 1.6rem;
-                color: #0587FF;
+                color: var(--blue-100);
                 font-size: 1.4rem;
   
                 display: flex;
@@ -126,7 +126,7 @@ main {
             width: 100%;
             border: none;
             background-color: transparent;
-            border-bottom: 2px solid #F4F4F4;
+            border-bottom: 2px solid var(--gray-50);
             padding: 1rem;
             font-size: 1.4rem;
             background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z' stroke='%23989898' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21 21L16.65 16.65' stroke='%23989898' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
@@ -135,7 +135,7 @@ main {
             padding-left: 4rem;
             
             &::placeholder {
-                color: #989898;
+                color: var(--gray-200);
                 font-size: 1.8rem; 
             }
         }
@@ -146,7 +146,7 @@ main {
         }
     }
     &__buttons {
-        background-color: #F8F8F8;
+        background-color: var(--gray-100);
         padding: 1.2rem 0.8rem;
         order: 1;
         display: flex;
@@ -166,7 +166,7 @@ main {
     }
     
     &__wrapper {
-        background-color: #fff;
+        background-color: var(--white);
         box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.1);
         height: 100vh;
         max-width: 428px;
@@ -211,7 +211,7 @@ main {
 
         label {
             font-size: 1.6rem;
-            color: #000000;
+            color: var(--black);
 
         }
     }
@@ -253,6 +253,7 @@ main {
 }
 
 .repositories {
+    flex-direction: column;
     margin-bottom: 4rem;
   &__item {
    
@@ -270,7 +271,7 @@ main {
 
           span {
               font-weight: bold;
-              color: #0587FF;
+              color: var(--blue-100);
           }
 
 
@@ -281,7 +282,7 @@ main {
       
       p {
         font-size: 1.4rem;
-        color: #989898;
+        color: var(--gray-200);
       }
 
   }
@@ -299,7 +300,7 @@ main {
     
       p {
         font-size: 1.4rem;
-        color:#000000;
+        color:var(--black);
       }
 
       img {
@@ -319,28 +320,28 @@ main {
   }
 }
 
-.repositories {
-    flex-direction: column;
-}
+
 .starred {
   margin-top: 4.0rem;
+  margin-bottom: 4.0rem;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-}
-.starredCard {
-  display: flex;
-  gap: 1rem;
-  padding: 1.6rem;
 
-  background-color: #F8F8F8;
-  border-radius: 1.6rem;
-
-  p {
-      font-size: 1.4rem;
-      color: #000;
-      display: flex;
-      align-items: center;
-      gap: 1.0rem;
+  &__card {
+    display: flex;
+    gap: 1rem;
+    padding: 1.6rem;
+  
+    background-color: var(--gray-100);
+    border-radius: 1.6rem;
+  
+    p {
+        font-size: 1.4rem;
+        color: var(--black);
+        display: flex;
+        align-items: center;
+        gap: 1.0rem;
+    }
   }
 }

@@ -9,8 +9,20 @@ body, h1, h2, h3, h4, button, input, textarea, select{
 }
 
 :root {
-    --gray-100: #989898;
+
+    --gray-50: #f4f4f4;
+    --gray-100: #f8f8f8;
+    --gray-150: #DBDBDB;
+    --gray-200: #989898;
+    --gray-700: #24292E;
+
+    --blue-50: #0056A6;
     --blue-100: #0587FF;
+
+    --white: #fff;
+    --black: #000000;
+
+    --border-color-primary: #FD8C73;
 
     font-size: 62.52%;
 }
@@ -33,7 +45,6 @@ h2,
 h3,
 h4 {
     font-weight: 400;
-    color: #262626;
 }
 
 body {

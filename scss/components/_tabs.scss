@@ -15,11 +15,12 @@
         cursor: pointer;
         border-bottom: 2px solid transparent;
         padding-bottom: 0.8rem;
+        
         &.active {
 
-            border-bottom: 2px solid #FD8C73;
+            border-bottom: 2px solid var(--border-color-primary);
             padding-bottom: 0.8rem;
-            color: #000;
+            color: var(--black);
             font-size: 1.8rem;
 
         }
@@ -27,12 +28,12 @@
         svg {
             width: 2.4rem;
             height: 2.4rem;
-            color: #989898;
+            color: var(--gray-200);
         }
 
         span {
-            border: 1px solid #DBDBDB;
-            background-color: #F8F8F8;
+            border: 1px solid var(--gray-150);
+            background-color: var(--gray-100);
             border-radius: 5.9rem;
             display: flex;
             height: 2.4rem;
