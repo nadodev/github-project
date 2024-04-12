@@ -2,14 +2,35 @@ import { USER_NAME } from "./fetchRepositories";
 
 
 // Função para buscar dados do usuário na API e salvar no localStorage
+// Função para buscar dados do usuário na API e salvar no localStorage
 export async function fetchUserDataAndSave(username) {
-    const userUrl = `https://api.github.com/users/${username}`;
+    const userDataFromStorage = getUserDataFromStorage(username);
+
+    // Verificar se os dados do usuário já estão no armazenamento local
+    if (userDataFromStorage) {
+        console.log('Dados do usuário encontrados no armazenamento local.');
+        displayUserData(userDataFromStorage); // Exibir os dados do usuário do armazenamento local
+        return userDataFromStorage;
+    }
 
     try {
+        const userUrl = `https://api.github.com/users/${username}`;
         const response = await fetch(userUrl);
+
+        // Verificar se a resposta da API é bem-sucedida
+        if (!response.ok) {
+            throw new Error(`Erro na API: ${response.statusText}`);
+        }
+
         const userData = await response.json();
 
         const starredResponse = await fetch(`https://api.github.com/users/${username}/starred`);
+
+        // Verificar se a resposta da API é bem-sucedida
+        if (!starredResponse.ok) {
+            throw new Error(`Erro na API: ${starredResponse.statusText}`);
+        }
+
         const starredData = await starredResponse.json();
         
         const totalStars = starredData.reduce((acc, repo) => acc + repo.stargazers_count, 0);
@@ -20,22 +41,32 @@ export async function fetchUserDataAndSave(username) {
             timestamp: Date.now()
         };
 
+        // Salvar dados no armazenamento local
+        saveUserDataToStorage(username, userDataWithTimestamp);
 
-        // Limpar todas as entradas relacionadas à aplicação no localStorage
-        clearAplicationDataInStorage();
+        // Exibir os dados do usuário
+        displayUserData(userDataWithTimestamp);
 
-        location.reload();
-
-        const existingUserData = localStorage.getItem(`userData_${username}`);
-        if (existingUserData) {
-            localStorage.removeItem(`userData_${username}`);
-        }
-
-     
-        localStorage.setItem(`userData_${username}`, JSON.stringify(userDataWithTimestamp));
+        return userDataWithTimestamp;
     } catch (error) {
         console.error('Erro ao buscar dados do usuário:', error);
-        throw error;
+
+        // Dados mocado
+        const mocadoData = {
+            login: 'usuário mocado',
+            avatar_url: 'https://avatars.githubusercontent.com/u/1?v=4',
+            bio: 'Descrição mocado',
+            public_repos: 10,
+            company: 'Empresa mocado',
+            location: 'Local mocado',
+            blog: 'Blog mocado',
+            twitter_username: 'Twitter mocado'
+        };
+        
+        // Exibir os dados mocado
+        displayUserData(mocadoData);
+
+        return mocadoData;
     }
 }
 
@@ -55,25 +86,28 @@ function clearAplicationDataInStorage() {
 
 
 // Função para recuperar os dados do usuário do localStorage
-function getUserDataFromStorage() {
-    const userDataJSON = localStorage.getItem(`userData_${USER_NAME}`);
+function getUserDataFromStorage(username) {
+    const userDataJSON = localStorage.getItem(`userData_${username}`);
 
     if (userDataJSON) {
         const userDataWithTimestamp = JSON.parse(userDataJSON);
-
      
         // Verificar se os dados estão dentro do limite de tempo (15 minutos)
-        const timeDiffLimitFifteenMinutes  = Date.now() - userDataWithTimestamp.timestamp;
+        const timeDiffLimitFifteenMinutes = Date.now() - userDataWithTimestamp.timestamp;
         const timeOutCacheExpiration = 15 * 60 * 1000; 
-        if (timeDiffLimitFifteenMinutes  < timeOutCacheExpiration) {
+        if (timeDiffLimitFifteenMinutes < timeOutCacheExpiration) {
             return userDataWithTimestamp.data;
         } else {
-            localStorage.removeItem(`userData_${USER_NAME}`);
+            // Remover dados expirados do armazenamento local
+            localStorage.removeItem(`userData_${username}`);
         }
     }
     return null;
 }
 
+function saveUserDataToStorage(username, userDataWithTimestamp) {
+    localStorage.setItem(`userData_${username}`, JSON.stringify(userDataWithTimestamp));
+}
 
 // Função para recuperar a contagem de repositórios favoritos do localStorage
 export function getStarredCountFromStorage(username) {
@@ -91,6 +125,7 @@ export function getStarredCountFromStorage(username) {
 
 // Função para exibir os dados do usuário na página
 export const userData = getUserDataFromStorage();
+console.log(userData)
 export function displayUserData(userData) {
 
     const starredCount = getStarredCountFromStorage(`userData_${USER_NAME}`);

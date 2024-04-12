@@ -1,3 +1,6 @@
+import { returnRepositoriesMock } from "./helpers";
+import { mockRepositories } from "./mockRepository";
+
 export const USER_NAME = 'diego3g';
 
 // Função para buscar os repositórios do usuário e salvá-los no localStorage
@@ -24,6 +27,7 @@ export async function fetchRepositoriesAndSave(username, query = '') {
 
     } catch (error) {
         console.error('Erro ao buscar repositórios:', error);
+        displayRepositories(mockRepositories);
         throw error;
     }
 }
@@ -57,27 +61,21 @@ export function getArrayFromLocalStorage(key) {
 
 // Função para exibir os repositórios na página
 export function displayRepositories(repositoriesData) {
-    
+   
     const repositoriesSection = document.getElementById('repositoriesSection');
     repositoriesSection.innerHTML = '';
 
 
     const RepositoriesSavedInLocalStorage = getArrayFromLocalStorage(USER_NAME);
 
+
     if (Array.isArray(RepositoriesSavedInLocalStorage)) {
-
         RepositoriesSavedInLocalStorage.forEach(repo => {
-
             const ItemRepository = document.createElement('div');
-
             ItemRepository.classList.add('repositories__item');
-
             ItemRepository.innerHTML = `
-            
                 <h3>${repo.name} / <span>${repo.default_branch}</span></h3>
-
                 <p>${repo.description || 'Nenhum resumo encontrado'}</p>
-
                 <div class="repositories__info">
                     <div class="repositories__stars">
                         <img src="./assets/star_fill.svg" alt="book"><p>${repo.stargazers_count}</p>
@@ -87,11 +85,9 @@ export function displayRepositories(repositoriesData) {
                     </div>
                 </div>
             `;
-
-
+    
             // Adicionar evento de clique para abrir a modal com informações do repositório
             ItemRepository.querySelector('h3').addEventListener('click', function() {
-
                 document.getElementById('repoName').textContent = repo.name;
                 document.getElementById('repoDescription').textContent = repo.description;
                 document.getElementById('repoStars').textContent = `Stars: ${repo.stargazers_count}`;
@@ -99,13 +95,13 @@ export function displayRepositories(repositoriesData) {
                 document.getElementById('repoLink').href = repo.html_url; 
                 document.getElementById('myModal').style.display = 'block';
                 document.getElementById('modalOverlay').style.display = 'block';
-
             });
-
+    
             repositoriesSection.appendChild(ItemRepository);
-
         });
     } else {
-        console.error("Nenhum repositório salvo encontrado no localStorage.");
+        console.error("Nenhum repositório salvo encontrado no localStorage. 22222");
+        returnRepositoriesMock(repositoriesData)
     }
+    
 }

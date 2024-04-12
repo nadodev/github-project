@@ -8,7 +8,16 @@ export async function getStarredRepositories(username) {
         return data.map(repo => repo.full_name);
     } catch (error) {
         console.error('Erro:', error);
-        return [];
+
+        const starredMocado = [
+            'usuario/repo1',
+            'usuario/repo2',
+            'usuario/repo3',
+            'usuario/repo4',
+            'usuario/repo5',
+        ]
+
+        return starredMocado;
     }
 }
 

@@ -28,12 +28,8 @@ export default defineConfig({
       ],
     },
     terserOptions: {
-      compress: {
-        drop_console: true,
-      },
       parse: {
         ecma: 8,
-        html5_comments: false,
       },
     }
   },
