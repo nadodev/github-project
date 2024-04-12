@@ -41,6 +41,9 @@ export async function fetchUserDataAndSave(username) {
             timestamp: Date.now()
         };
 
+        // reload the page
+        location.reload();
+
         // Salvar dados no armazenamento local
         saveUserDataToStorage(username, userDataWithTimestamp);
 
