@@ -208,6 +208,12 @@ main {
         display: flex;
         flex-direction: column;
         gap: 1.4rem;
+
+        label {
+            font-size: 1.6rem;
+            color: #000000;
+
+        }
     }
     @media(min-width: 744px) {
         &__search {
