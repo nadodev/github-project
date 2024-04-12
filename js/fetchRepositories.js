@@ -1,3 +1,5 @@
+export const USER_NAME = 'diego3g';
+
 // Função para buscar os repositórios do usuário e salvá-los no localStorage
 function searchRepositories() {
     const searchInput = document.getElementById('searchInput').value;
@@ -13,7 +15,7 @@ export async function fetchRepositoriesAndSave(username, query = '') {
         const filteredRepositories = repositoriesData.filter(repo => repo.name.includes(query));
 
         // Salvar os repositórios filtrados no localStorage
-        localStorage.setItem('repositories', JSON.stringify(filteredRepositories));
+        localStorage.setItem(username, JSON.stringify(filteredRepositories));
 
         displayRepositories(filteredRepositories);
 
@@ -23,7 +25,8 @@ export async function fetchRepositoriesAndSave(username, query = '') {
     }
 }
 
-function getArrayFromLocalStorage(key) {
+export function getArrayFromLocalStorage(key) {
+    console.log('getArrayFromLocalStorage', key)
     const storedData = localStorage.getItem(key);
     if (storedData) {
         try {
@@ -39,17 +42,22 @@ function getArrayFromLocalStorage(key) {
             return null;
         }
     } else {
-        console.error(`Nenhum dado encontrado em ${key} no localStorage.`);
+        console.error(`Nenhum dado armazenado em ${key}.`);
         return null;
     }
 }
 
+export function clearAndFetchRepositories(username, query = '') {
+    // Limpar os dados antigos do armazenamento local
+    localStorage.removeItem(username);
+    // Buscar e salvar os repositórios do novo usuário
+    return fetchRepositoriesAndSave(username, query);
+}
 // Função para exibir os repositórios na página
 export function displayRepositories(repositoriesData) {
     const repositoriesSection = document.getElementById('repositoriesSection');
     repositoriesSection.innerHTML = '';
-
-    const savedRepositories = getArrayFromLocalStorage('repositories');
+    const savedRepositories = getArrayFromLocalStorage(USER_NAME);
 
     if (Array.isArray(savedRepositories)) {
         savedRepositories.forEach(repo => {

@@ -1,17 +1,19 @@
 
 import { displayUserData, fetchUserDataAndSave, userData } from './js/fetchUser.js';
-import { fetchRepositoriesAndSave, displayRepositories } from './js/fetchRepositories.js';
+import { fetchRepositoriesAndSave, displayRepositories, getArrayFromLocalStorage, USER_NAME } from './js/fetchRepositories.js';
 import { closeModal } from './js/closeModal.js';
 import { activeTabs } from './js/tabs.js';
 
 const additionalInfo = document.getElementById('additionalInfo');
 const additionalUserInfo = document.getElementById('additionalUserInfo');
-const repositoriesData = fetchRepositoriesAndSave('diego3g');
+
 
 const btn_search = document.getElementById('btn_search');
 
 const input__search = document.getElementById('input_search');
 const searchInput = document.getElementById('search');
+
+
 
 btn_search.addEventListener('click', function () {
     input__search.classList.toggle('active');
@@ -20,7 +22,8 @@ btn_search.addEventListener('click', function () {
 
 searchInput.addEventListener('keypress', handleKeyPress);
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
+    const repositoriesData = getArrayFromLocalStorage(USER_NAME);
     const btnFilterType = document.getElementById('btn_type');
     const btnFilterLanguage = document.getElementById('btn_language');
     const btnCloseFilterLanguage = document.querySelector('#close_language');
@@ -32,6 +35,13 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeFilterButton(btnFilterType, filterType, filterLanguage);
     initializeCloseButton(btnCloseFilterLanguage, filterLanguage);
     initializeCloseButton(btnCloseFilterType, filterType);
+
+    if (repositoriesData) {
+        displayRepositories(repositoriesData);
+    } else {
+        // Se não houver dados no armazenamento local, buscar da API e salvar no localStorage
+         fetchRepositoriesAndSave(USER_NAME);
+    }
 });
 
 
@@ -55,7 +65,7 @@ function initializeFilterButton(button, filterToShow, filterToHide) {
 function handleKeyPress(event) {
     // Verifica se a tecla pressionada é "Enter"
     if (event.key === 'Enter') {
-        fetchRepositoriesAndSave('diego3g', event.target.value);
+        fetchRepositoriesAndSave(USER_NAME, event.target.value);
     }
 }
 
@@ -73,9 +83,9 @@ if (userData) {
     displayUserData(userData);
 } else {
     // Se os dados não estiverem no cache ou estiverem expirados, buscar da API
-    fetchUserDataAndSave('diego3g')
-        .then(userData => displayUserData(userData))
-        .catch(error => console.error('Erro ao buscar e exibir dados do usuário:', error));
+    fetchUserDataAndSave(USER_NAME)
+    .then(userData => displayUserData(userData))
+    .catch(error => console.error('Erro ao buscar e exibir dados do usuário:', error));
 }
 
 
@@ -92,13 +102,13 @@ additionalInfo.addEventListener('click', function () {
 
 
 // Exibir os repositórios na página, utilizando cache se disponível
-const username = 'diego3g'; // Substitua pelo nome de usuário desejado
-await fetchRepositoriesAndSave(username);
+
+// await fetchRepositoriesAndSave(USER_NAME);;
 
 
 
 activeTabs('repositories');
-displayRepositories(repositoriesData);
+// displayRepositories(repositoriesData);
 
 // Fechar a modal quando o usuário clica no botão 'X'
 document.getElementsByClassName('close')[0].addEventListener('click', function () {
