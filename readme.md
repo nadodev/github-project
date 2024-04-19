@@ -4,7 +4,7 @@
 
 
 
-[Documentação com docsify]([https://git-scm.com](https://nadodev.github.io/docs_project/). 
+[Documentação com docsify](https://nadodev.github.io/docs_project/). 
 
 ### Algumas Observação.
 - Esta aplicação foi construída com base na API do GitHub. No entanto, a API do GitHub tem um limite de requisições e, para evitar o problema de às vezes não aparecer nada na tela, pensei em usar uma estratégia de cache. Como é apenas frontend, a única forma possível foi salvando no armazenamento local (localStorage). Assim, ele salva todas as informações no armazenamento local e depois as exibe na tela.
