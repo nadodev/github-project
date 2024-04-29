@@ -7,11 +7,11 @@
 [Documentação com docsify](https://nadodev.github.io/docs_project/). 
 
 ### Algumas Observação.
-- Esta aplicação foi construída com base na API do GitHub. No entanto, a API do GitHub tem um limite de requisições e, para evitar o problema de às vezes não aparecer nada na tela, pensei em usar uma estratégia de cache. Como é apenas frontend, a única forma possível foi salvando no armazenamento local (localStorage). Assim, ele salva todas as informações no armazenamento local e depois as exibe na tela.
+- Esta aplicação foi construída com base na API do GitHub. No entanto, a API do GitHub tem um limite de requisições e, para evitar o problema de às vezes não aparecer nada na tela, pensei em usar uma estratégia de cache. Como é apenas frontend, a forma mais  viável pensado foi salvando no armazenamento local (localStorage). Assim, ele salva todas as informações no armazenamento local e depois as exibe na tela.
 
 - Foi apenas exibido 30 Repositórios e 30 Starred.
 - Os Filtros type e language, não tem efeito, é apenas o visual.
-- O Conteudo do repositório foi escolhido uma modal.
+- Para mostraro conteudo do repositório foi escolhido uma modal.
 - css e javascript foi minificado pensando na performace do aplicação.
 
 ### Features
